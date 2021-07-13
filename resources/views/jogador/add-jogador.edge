@@ -1,0 +1,33 @@
+@layout('main')
+@section('content')
+
+<h1 class="mb-3">Criar Jogador</h1>
+
+<form method="POST" action="{{ route('JogadorController.salvarJogador') }}">
+    {{ csrfField() }}
+    <div class="mb-3">
+      <label for="nomeJogador" class="form-label">Nome</label>
+      <input type="text" name="nome" class="form-control" id="nomeJogador">
+    </div>
+    <div class="mb-3">
+      <label for="numero" class="form-label">Número</label>
+      <input type="text" name="numero" class="form-control" id="numero">
+    </div>
+
+    <select name="timeId" class="form-select mb-3">
+        <option selected>Selecione um time</option>
+        @each(time in times)
+            <option value="{{ time.id }}">{{ time.nome }}</option>  
+        @endeach
+    </select>
+
+    <button type="submit" class="btn btn-primary">Criar</button>
+</form>
+
+@if(hasErrorFor('default'))
+  <div if class="alert alert-danger" role="alert">
+    erorrrrrr
+  </div>
+@endif
+
+@endsection

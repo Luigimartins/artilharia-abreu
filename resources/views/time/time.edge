@@ -1,0 +1,27 @@
+@layout('main')
+@section('content')
+
+<h1 class="mb-3">Times</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Cor</th>
+            <th scope="col">Ação</th>
+        </tr>
+    </thead>
+    <tbody>
+        @each(time in times)
+            <tr>
+                <td>{{ time.nome }}</td>
+                <td>{{ time.cor }}</td>
+                <td><a href="{{ route('/jogador/time/:id', { id: time.id }) }}">ver jogadores</a></td>
+            </tr>
+        @endeach
+    </tbody>
+  </table>
+
+<a class="btn btn-primary" href="/add-time">Criar novo time</a>
+
+@endsection

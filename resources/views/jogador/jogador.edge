@@ -1,0 +1,27 @@
+@layout('main')
+@section('content')
+
+<h1 class="mb-3">Jogadores</h1>
+
+<table class="table mb-3">
+    <thead>
+        <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Numero</th>
+            <th scope="col">Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        @each(jogador in jogadores)
+            <tr>
+                <td>{{ jogador.nome }}</td>
+                <td>{{ jogador.numero }}</td>
+                <td>{{ jogador.time.nome }}</td>
+            </tr>
+        @endeach
+    </tbody>
+</table>
+
+<a class="btn btn-primary" href="{{ route('/criar-jogador') }}">Adicionar Jogador</a>
+
+@endsection
