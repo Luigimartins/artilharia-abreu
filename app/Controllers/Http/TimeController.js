@@ -7,7 +7,7 @@ class TimeController {
     async listarTimes({ view }) {
 
         const times = await Time.all()
-
+        console.log(times)
         return view.render('/time/time', {
             times: times.toJSON()    
         })
